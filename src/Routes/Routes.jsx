@@ -24,7 +24,7 @@ import PrivateRoute from "../Private/PrivateRoute";
         },
         {
           path: "/order",
-          element: <PrivateRoute><Order></Order></PrivateRoute>
+          element: <Order></Order>
         },
         {
           path: "/login",
