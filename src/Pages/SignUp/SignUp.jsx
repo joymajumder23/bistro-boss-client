@@ -4,9 +4,11 @@ import signUp from "../../assets/others/authentication.gif";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const SignUp = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
+    const axiosPublic = useAxiosPublic();
 
     const {
         register,
@@ -23,28 +25,38 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         console.log(result.user);
-                        Swal.fire({
-                            title: "Sign Up Successfully",
-                            showClass: {
-                                popup: `
+
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email
+                        };
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        title: "Sign Up Successfully",
+                                        showClass: {
+                                            popup: `
                     animate__animated
                     animate__fadeInUp
                     animate__faster
                   `
-                            },
-                            hideClass: {
-                                popup: `
+                                        },
+                                        hideClass: {
+                                            popup: `
                     animate__animated
                     animate__fadeOutDown
                     animate__faster
                   `
-                            }
-                        });
+                                        }
+                                    });
+                                }
+                            })
                     })
                     .catch(error => {
                         console.log(error.message);
                     })
-                reset();
             })
     };
     return (
