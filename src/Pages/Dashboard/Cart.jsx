@@ -73,7 +73,6 @@ const Cart = () => {
                                                 </div>
                                                 <div>
                                                     <div className="font-bold">{item?.name}</div>
-                                                    <div className="text-sm opacity-50">United States</div>
                                                 </div>
                                             </div>
                                         </td>
