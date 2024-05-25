@@ -7,12 +7,12 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation();
 
     if (loading) {
-        return <>
-            <progress className="progress progress-success w-56" value={0} max="100"></progress>
-            <progress className="progress progress-success w-56" value="10" max="100"></progress>
-            <progress className="progress progress-success w-56" value="40" max="100"></progress>
-            <progress className="progress progress-success w-56" value="70" max="100"></progress>
-            <progress className="progress progress-success w-56" value="100" max="100"></progress></>;
+        return <div className="grid grid-cols-3 gap-6 justify-center items-center text-center mx-auto mt-24">
+            <progress className="progress progress-success w-56 max-h-screen h-8"></progress>
+            <progress className="progress progress-success w-56 max-h-screen h-8"></progress>
+            <progress className="progress progress-success w-56 max-h-screen h-8"></progress>
+            <progress className="progress progress-success w-56 max-h-screen h-8"></progress>
+            <progress className="progress progress-success w-56 max-h-screen h-8"></progress></div>;
     }
     
     if (user) {
