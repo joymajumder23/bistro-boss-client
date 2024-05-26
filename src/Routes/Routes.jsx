@@ -13,6 +13,8 @@ import Cart from "../Pages/Dashboard/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AddItems from "../Pages/Dashboard/AddItems/AddItems";
 import AdminRoute from "../Private/AdminRoute";
+import ManageItems from "../Pages/Dashboard/ManageItems/ManageItems";
+import UpdateItem from "../Pages/Dashboard/UpdateItem/UpdateItem";
 
   export const router = createBrowserRouter([
     {
@@ -60,6 +62,15 @@ import AdminRoute from "../Private/AdminRoute";
         {
           path: 'addItems',
           element: <AdminRoute><AddItems></AddItems></AdminRoute>
+        },
+        {
+          path: 'manageItems',
+          element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
+        },
+        {
+          path: 'updateItems/:id',
+          element: <UpdateItem></UpdateItem>,
+          loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
         }
       ]
     }
