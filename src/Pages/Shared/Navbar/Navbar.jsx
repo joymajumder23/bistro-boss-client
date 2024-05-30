@@ -16,7 +16,12 @@ const Navbar = () => {
     const navLinks = <>
         <li><Link to="/"><a>Home</a></Link></li>
         <li><Link to="/contactUs"><a>Contact Us</a></Link></li>
-        <li><Link to="dashboard"><a>Dashboard</a></Link></li>
+        {
+            user && <li><Link to="dashboard/adminHome"><a>Dashboard</a></Link></li>
+        }
+        {
+            user && <li><Link to="dashboard/usersHome"><a>Dashboard</a></Link></li>
+        }
         <li><Link to="/menu"><a>Our Menu</a></Link></li>
         <li><Link to="/order"><a>Order</a></Link></li>
 

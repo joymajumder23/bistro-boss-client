@@ -3,10 +3,12 @@ import { FaBook, FaDashcube, FaHome, FaList, FaRegSave, FaShoppingCart, FaUsers,
 import { FaRankingStar } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../../Hooks/useAdmin";
+import useCart from "../../Hooks/useCart";
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
     // const isAdmin = true;
+    const [cart] = useCart();
     return (
         <div className="flex">
             {/* sidebar */}
@@ -21,8 +23,8 @@ const Dashboard = () => {
                             <li><NavLink to="/dashboard/allUsers"><FaUsers></FaUsers> All Users</NavLink></li>
                         </> : <>
                             <li><NavLink to="/dashboard/userHome"><FaHome></FaHome> User Home</NavLink></li>
-                            <li><NavLink to="/dashboard/reservation"><FaDashcube></FaDashcube> My Reservation</NavLink></li>
-                            <li><NavLink to="/dashboard/cart"><FaShoppingCart></FaShoppingCart> My Cart</NavLink></li>
+                            <li><NavLink to="/dashboard/paymentHistory"><FaDashcube></FaDashcube> Payment History</NavLink></li>
+                            <li><NavLink to="/dashboard/cart"><FaShoppingCart></FaShoppingCart> My Cart {cart.length}</NavLink></li>
                             <li><NavLink to="/dashboard/review"><FaRankingStar></FaRankingStar> Add a Review</NavLink></li>
                             <li><NavLink to="/dashboard/bookings"><FaRegSave></FaRegSave> My Bookings</NavLink></li>
                         </>
