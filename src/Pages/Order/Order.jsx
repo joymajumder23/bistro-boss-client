@@ -13,7 +13,7 @@ const Order = () => {
     const [tabIndex, setTabIndex] = useState(initialIndex);
     const [menu, setMenu] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/menu')
+        fetch('https://bistro-boss-server-snowy-zeta.vercel.app/menu')
         .then(res => res.json())
         .then(data => {
             setMenu(data);
